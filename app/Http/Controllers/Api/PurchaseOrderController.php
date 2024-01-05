@@ -150,17 +150,17 @@ class PurchaseOrderController extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('delete', Category::class);
-        $category = Category::withCount('assets as assets_count', 'accessories as accessories_count', 'consumables as consumables_count', 'components as components_count', 'licenses as licenses_count')->findOrFail($id);
+        // $this->authorize('delete', Category::class);
+        $data = PurchaseOrder::findOrFail($id);
 
-        if (! $category->isDeletable()) {
-            return response()->json(
-                Helper::formatStandardApiResponse('error', null, trans('admin/categories/message.assoc_items', ['asset_type'=>$category->category_type]))
-            );
-        }
-        $category->delete();
+        // if (! $data->isDeletable()) {
+        //     return response()->json(
+        //         Helper::formatStandardApiResponse('error', null, trans('admin/categories/message.assoc_items', ['asset_type'=>$data->category_type]))
+        //     );
+        // }
+        $data->delete();
 
-        return response()->json(Helper::formatStandardApiResponse('success', null, trans('admin/categories/message.delete.success')));
+        return response()->json(Helper::formatStandardApiResponse('success', null, 'Delete Succeed.'));
     }
 
 
@@ -173,9 +173,11 @@ class PurchaseOrderController extends Controller
      */
     public function selectlist(Request $request)
     {
-        $this->authorize('view.selectlists');
+        // $this->authorize('view.selectlists');
         $datas = PurchaseOrder::select([
             'id',
+            'name',
+            'order_date'
         ]);
 
         // if ($request->filled('search')) {
