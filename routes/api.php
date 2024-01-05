@@ -153,6 +153,34 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api', 'throttle:api']], functi
        'parameters' => ['purchase_order' => 'purchase_order_id'],
        ]
    ); // end purchase orders API routes
+     
+   /**
+    * Vendors API routes
+    */
+    Route::group(['prefix' => 'vendors'], function () {
+      
+      Route::get('{item_type}/selectlist',
+          [
+              Api\VendorController::class, 
+              'selectlist'
+          ]
+      )->name('api.vendors.selectlist');
+
+    });
+
+  Route::resource('vendors', 
+      Api\VendorController::class,
+      ['names' => [
+              'index' => 'api.vendors.index',
+              'show' => 'api.vendors.show',
+              'update' => 'api.vendors.update',
+              'store' => 'api.vendors.store',
+              'destroy' => 'api.vendors.destroy',
+          ],
+      'except' => ['create', 'edit'],
+      'parameters' => ['vendor' => 'vendor_id'],
+      ]
+  ); // end Vendors API routes
 
      
      /**

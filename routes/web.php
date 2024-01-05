@@ -24,16 +24,24 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\PurchaseOrders\PurchaseOrdersController;
+use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-// PO
+// PO, Vendors
 Route::group(['middleware' => 'auth'], function () {
     /*
     * Purchase Orders
     */
     Route::resource('purchase-orders', PurchaseOrdersController::class, [
         'parameters' => ['purchase_order' => 'purchase_order_id'],
+    ]);
+
+    /*
+    * Vendors
+    */
+    Route::resource('vendors', VendorController::class, [
+        'parameters' => ['vendor' => 'vendor_id'],
     ]);
 });
 

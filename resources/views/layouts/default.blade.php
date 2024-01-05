@@ -428,12 +428,24 @@
                                 </a>
                             </li>
                         @endcan
-                        <li{!! (Request::is('purchase-orders*') ? ' class="active"' : '') !!}>
-                            <a href="{{ route('purchase-orders.index') }}">
-                                <i class="fas fa-cart-arrow-down fa-fw"></i>
-                                <span>Purchase Orders</span>
-                            </a>
-                        </li>
+                        <!-- purchase-orders -->
+                        @can('index', \App\Models\PurchaseOrder::class)
+                            <li{!! (Request::is('purchase-orders*') ? ' class="active"' : '') !!}>
+                                <a href="{{ route('purchase-orders.index') }}">
+                                    <i class="fas fa-cart-arrow-down fa-fw"></i>
+                                    <span>Purchase Orders</span>
+                                </a>
+                            </li>
+                        @endcan
+                        <!-- vendors -->
+                        @can('index', \App\Models\Vendors::class)
+                            <li{!! (Request::is('vendors*') ? ' class="active"' : '') !!}>
+                                <a href="{{ route('vendors.index') }}">
+                                    <i class="fas fa-store fa-fw"></i>
+                                    <span>Vendors</span>
+                                </a>
+                            </li>
+                        @endcan
                         @can('index', \App\Models\Asset::class)
                             <li class="treeview{{ ((Request::is('statuslabels/*') || Request::is('hardware*')) ? ' active' : '') }}">
                                 <a href="#"><i class="fas fa-barcode fa-fw" aria-hidden="true"></i>

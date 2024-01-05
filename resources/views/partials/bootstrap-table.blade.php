@@ -447,7 +447,8 @@
         'fieldsets',
         'groups',
         'kits',
-        'purchase-orders'
+        'purchase-orders',
+        'vendors',
     ];
 
     for (var i in formatters) {
