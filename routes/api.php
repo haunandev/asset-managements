@@ -168,19 +168,47 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api', 'throttle:api']], functi
 
     });
 
-  Route::resource('vendors', 
-      Api\VendorController::class,
-      ['names' => [
-              'index' => 'api.vendors.index',
-              'show' => 'api.vendors.show',
-              'update' => 'api.vendors.update',
-              'store' => 'api.vendors.store',
-              'destroy' => 'api.vendors.destroy',
-          ],
-      'except' => ['create', 'edit'],
-      'parameters' => ['vendor' => 'vendor_id'],
-      ]
-  ); // end Vendors API routes
+    Route::resource('vendors', 
+        Api\VendorController::class,
+        ['names' => [
+                'index' => 'api.vendors.index',
+                'show' => 'api.vendors.show',
+                'update' => 'api.vendors.update',
+                'store' => 'api.vendors.store',
+                'destroy' => 'api.vendors.destroy',
+            ],
+        'except' => ['create', 'edit'],
+        'parameters' => ['vendor' => 'vendor_id'],
+        ]
+    ); // end Vendors API routes
+
+    /**
+     * Products API routes
+     */
+    Route::group(['prefix' => 'products'], function () {
+        
+        Route::get('{item_type}/selectlist',
+            [
+                Api\ProductController::class, 
+                'selectlist'
+            ]
+        )->name('api.products.selectlist');
+
+        });
+
+        Route::resource('products', 
+            Api\ProductController::class,
+            ['names' => [
+                    'index' => 'api.products.index',
+                    'show' => 'api.products.show',
+                    'update' => 'api.products.update',
+                    'store' => 'api.products.store',
+                    'destroy' => 'api.products.destroy',
+                ],
+            'except' => ['create', 'edit'],
+            'parameters' => ['product' => 'product_id'],
+            ]
+        ); // end Products API routes
 
      
      /**

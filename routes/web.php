@@ -23,6 +23,7 @@ use App\Http\Controllers\ViewAssetsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseOrders\PurchaseOrdersController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,13 @@ Route::group(['middleware' => 'auth'], function () {
     */
     Route::resource('vendors', VendorController::class, [
         'parameters' => ['vendor' => 'vendor_id'],
+    ]);
+
+    /*
+    * Products
+    */
+    Route::resource('products', ProductController::class, [
+        'parameters' => ['product' => 'product_id'],
     ]);
 });
 

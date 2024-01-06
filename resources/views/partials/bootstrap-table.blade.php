@@ -449,6 +449,7 @@
         'kits',
         'purchase-orders',
         'vendors',
+        'products',
     ];
 
     for (var i in formatters) {

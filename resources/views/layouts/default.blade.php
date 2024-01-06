@@ -446,6 +446,15 @@
                                 </a>
                             </li>
                         @endcan
+                        <!-- products -->
+                        @can('index', \App\Models\Product::class)
+                            <li{!! (Request::is('products*') ? ' class="active"' : '') !!}>
+                                <a href="{{ route('products.index') }}">
+                                    <i class="fas fa-boxes-stacked fa-fw"></i>
+                                    <span>Products</span>
+                                </a>
+                            </li>
+                        @endcan
                         @can('index', \App\Models\Asset::class)
                             <li class="treeview{{ ((Request::is('statuslabels/*') || Request::is('hardware*')) ? ' active' : '') }}">
                                 <a href="#"><i class="fas fa-barcode fa-fw" aria-hidden="true"></i>

@@ -179,6 +179,15 @@ class SettingsServiceProvider extends ServiceProvider
             return 'components/';
         });
 
+        // Products paths and URLs
+        \App::singleton('products_upload_path', function () {
+            return 'products/';
+        });
+
+        \App::singleton('products_upload_url', function () {
+            return 'products/';
+        });
+
         // Set the monetary locale to the configured locale to make helper::parseFloat work.
         setlocale(LC_MONETARY, config('app.locale'));
         setlocale(LC_NUMERIC, config('app.locale'));
