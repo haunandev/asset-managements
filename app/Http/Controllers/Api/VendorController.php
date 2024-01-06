@@ -14,14 +14,12 @@ class VendorController extends Controller
     public $model;
     public $url_prefix;
     public $transformer;
+    public $table_columns;
     public function __construct() {
         $this->model = new Vendor;
         $this->transformer = new VendorTransformer;
         $this->url_prefix = 'vendors';
-    }
-    public function index(Request $request)
-    {
-        $allowed_columns = [
+        $this->table_columns = [
             'id',
             'name',
             'address',
@@ -39,25 +37,12 @@ class VendorController extends Controller
             'created_by',
             'updated_by',
         ];
+    }
+    public function index(Request $request)
+    {
+        $allowed_columns = $this->table_columns;
 
-        $datas = $this->model::select([
-            'id',
-            'name',
-            'address',
-            'country',
-            'state',
-            'city',
-            'zip',
-            'npwp',
-            'phone1',
-            'phone2',
-            'fax1',
-            'fax2',
-            'website',
-            'description',
-            'created_by',
-            'updated_by',
-        ]);
+        $datas = $this->model::select([...$this->table_columns]);
 
 
         /*
