@@ -198,9 +198,11 @@ class VendorController extends Controller
             'updated_by',
         ]);
 
-        // if ($request->filled('search')) {
-        //     $datas = $datas->where('name', 'LIKE', '%'.$request->get('search').'%');
-        // }
+        if ($request->filled('search')) {
+            $datas = $datas->where('name', 'LIKE', '%'.$request->get('search').'%');
+        }
+
+        $datas = $datas->paginate(50);
 
         return (new SelectlistTransformer)->transformSelectlist($datas);
     }
