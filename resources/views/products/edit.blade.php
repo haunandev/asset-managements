@@ -13,7 +13,7 @@
 @include ('partials.forms.edit.textarea', ['translated_name' => 'Product Description', 'fieldname' => 'description'])
 @include ('partials.forms.edit.manufacturer-select', ['translated_name' => 'Brand Name', 'fieldname' => 'manufacturer_id'])
 @include ('partials.forms.edit.category-select', ['translated_name' => trans('general.category'), 'fieldname' => 'category_id'])
-{{-- @include ('partials.forms.edit.category-select', ['translated_name' => 'Sub Category', 'fieldname' => 'sub_category_id']) --}}
+@include ('partials.forms.edit.category-select', ['translated_name' => 'Sub Category', 'fieldname' => 'sub_category_id'])
 @include ('partials.forms.edit.image-upload', ['image_path' => app('products_upload_path')])
 @include ('partials.forms.edit.purchase_cost', ['currency_type' => 'IDR', 'fieldname' => 'price'])
 
