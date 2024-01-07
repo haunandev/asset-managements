@@ -25,8 +25,7 @@ class PurchaseOrder extends SnipeModel
      * Purchase Order validation rules
      */
     public $rules = [
-        'name' => 'required',
-        'order_date' => 'required'
+        'vendor_id' => 'required',
     ];
 
     /**
@@ -35,8 +34,23 @@ class PurchaseOrder extends SnipeModel
      * @var array
      */
     protected $fillable = [
-        'name',
-        'order_date',
+        'po_no',
+        'vendor_id',
+        'purpose_id',
+        'memo',
+        'payment_terms',
+        'etd',
+        'eta',
+        'general_discount',
+        'taxable_nett_value',
+        'vat',
+        'grand_value',
+        'created_by',
+        'updated_by',
+        'manager_approval_by',
+        'manager_approval_time',
+        'finance_approval_by',
+        'finance_approval_time'
     ];
     use ValidatingTrait;
 
@@ -47,12 +61,21 @@ class PurchaseOrder extends SnipeModel
      *
      * @var array
      */
-    protected $searchableAttributes = [];
+    protected $searchableAttributes = [
+        'po_no'
+    ];
 
     /**
      * The relations and their attributes that should be included when searching the model.
      *
      * @var array
      */
-    protected $searchableRelations = [];
+    protected $searchableRelations = [
+        'user_created_by' => ['name']
+    ];
+
+    public function user_created_by()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'created_by');
+    }
 }

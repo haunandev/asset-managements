@@ -5,9 +5,26 @@ namespace App\Http\Controllers\PurchaseOrders;
 use App\Http\Controllers\Controller;
 use App\Models\PurchaseOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PurchaseOrdersController extends Controller
 {
+    public $table_columns;
+    public function __construct() {
+        $this->table_columns = [
+            'po_no',
+            'vendor_id',
+            'purpose_id',
+            'memo',
+            'payment_terms',
+            'etd',
+            'eta',
+            'general_discount',
+            'taxable_nett_value',
+            'vat',
+            'grand_value',
+        ];
+    }
     public function index()
     {
         return view('purchase-orders/index');
@@ -22,8 +39,14 @@ class PurchaseOrdersController extends Controller
     {
         // $this->authorize('create', PurchaseOrder::class);
         $data = new PurchaseOrder();
-        $data->name = $request->input('name');
-        $data->order_date = $request->input('order_date');
+        foreach ($this->table_columns as $col) {
+            $data->{$col} = $request->input($col);
+        }
+        // set po no
+        $data->po_no = 'PO-'.rand(0000000,9999999);
+        // set user created
+        $data->created_by = Auth::user()->id;
+
         // $data = $request->handleImages($data);
         if ($data->save()) {
             return redirect()->route('purchase-orders.index')->with('success', 'Success');
@@ -50,8 +73,10 @@ class PurchaseOrdersController extends Controller
         }
 
         // Update the data
-        $data->name = $request->input('name');
-        $data->order_date = $request->input('order_date');
+        foreach ($this->table_columns as $col) {
+            $data->{$col} = $request->input($col);
+        }
+        $data->updated_by = Auth::user()->id;
 
         // $data = $request->handleImages($data);
 

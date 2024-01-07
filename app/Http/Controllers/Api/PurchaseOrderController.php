@@ -16,6 +16,31 @@ use App\Http\Transformers\PurchaseOrderTransformer;
 
 class PurchaseOrderController extends Controller
 {
+    public $table_columns;
+    public function __construct() {
+        $this->table_columns = [
+            'id',
+            'po_no',
+            'vendor_id',
+            'purpose_id',
+            'memo',
+            'payment_terms',
+            'etd',
+            'eta',
+            'general_discount',
+            'taxable_nett_value',
+            'vat',
+            'grand_value',
+            'created_by',
+            'updated_by',
+            'manager_approval_by',
+            'manager_approval_time',
+            'finance_approval_by',
+            'finance_approval_time',
+            'created_at',
+            'updated_at'
+        ];
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,40 +50,16 @@ class PurchaseOrderController extends Controller
      */
     public function index(Request $request)
     {
-        $allowed_columns = [
-            'id',
-            'name',
-            'order_date',
-        ];
+        $allowed_columns = $this->table_columns;
 
-        $datas = PurchaseOrder::select([
-            'id',
-            'name',
-            'created_at',
-            'updated_at',
-            'order_date',
-            ]);
-
-
-        /*
-         * This checks to see if we should override the Admin Setting to show archived assets in list.
-         * We don't currently use it within the Snipe-IT GUI, but will be useful for API integrations where they
-         * may actually need to fetch assets that are archived.
-         *
-         * @see \App\Models\Category::showableAssets()
-         */
-        // if ($request->input('archived')=='true') {
-        //     $datas = $datas->withCount('assets as assets_count');
-        // } else {
-        //     $datas = $datas->withCount('showableAssets as assets_count');
-        // }
+        $datas = PurchaseOrder::select([...$this->table_columns]);
 
         if ($request->filled('search')) {
             $datas = $datas->TextSearch($request->input('search'));
         }
 
-        if ($request->filled('name')) {
-            $datas->where('name', '=', $request->input('name'));
+        if ($request->filled('po_no')) {
+            $datas->where('po_no', '=', $request->input('po_no'));
         }
 
         // Make sure the offset and limit are actually integers and do not exceed system limits
@@ -66,7 +67,7 @@ class PurchaseOrderController extends Controller
         $limit = app('api_limit_value');
 
         $order = $request->input('order') === 'asc' ? 'asc' : 'desc';
-        $sort = in_array($request->input('sort'), $allowed_columns) ? $request->input('sort') : 'assets_count';
+        $sort = in_array($request->input('sort'), $allowed_columns) ? $request->input('sort') : 'po_no';
         $datas->orderBy($sort, $order);
 
         $total = $datas->count();

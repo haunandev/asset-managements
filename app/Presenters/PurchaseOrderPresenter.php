@@ -14,30 +14,39 @@ class PurchaseOrderPresenter extends Presenter
     public static function dataTableLayout()
     {
         $layout = [
+            // [
+            //     'field' => 'id',
+            //     'searchable' => false,
+            //     'sortable' => false,
+            //     'switchable' => false,
+            //     'title' => trans('general.id'),
+            //     'visible' => false,
+            // ],
             [
-                'field' => 'id',
-                'searchable' => false,
-                'sortable' => true,
-                'switchable' => true,
-                'title' => trans('general.id'),
-                'visible' => true,
-            ],
-            [
-                'field' => 'name',
+                'field' => 'po_no',
                 'searchable' => true,
                 'sortable' => true,
                 'switchable' => true,
-                'title' => trans('general.name'),
+                'title' => 'PO No.',
                 'visible' => true,
             ],
             [
-                'field' => 'order_date',
+                'field' => 'created_at',
                 'searchable' => false,
                 'sortable' => true,
                 'switchable' => true,
-                'title' => trans('general.date'),
+                'title' => 'Request Date',
                 'visible' => true,
-            ], 
+            ], [
+                'field' => 'user_created_by',
+                'searchable' => true,
+                'sortable' => true,
+                'switchable' => true,
+                // 'title' => trans('general.manufacturer'),
+                'title' => 'Request By',
+                'visible' => true,
+                'formatter' => 'usersLinkObjFormatter',
+            ],
             [
                 'field' => 'actions',
                 'searchable' => false,
