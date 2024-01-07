@@ -38,7 +38,7 @@ class ProductPresenter extends Presenter
                 'switchable' => true,
                 'title' => 'Product Name',
                 'visible' => true,
-                // 'formatter' => 'vendorsLinkFormatter',
+                'formatter' => 'productsLinkFormatter',
             ],[
                 'field' => 'manufacturer',
                 'searchable' => true,

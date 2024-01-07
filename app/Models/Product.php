@@ -51,4 +51,14 @@ class Product extends Model
     {
         return $this->belongsTo(\App\Models\Manufacturer::class, 'manufacturer_id');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(\App\Models\Category::class, 'category_id');
+    }
+
+    public function sub_category()
+    {
+        return $this->belongsTo(\App\Models\Category::class, 'sub_category_id');
+    }
 }
