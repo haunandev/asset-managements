@@ -33,8 +33,8 @@ class SettingsSeeder extends Seeder
         $settings->time_display_format = 'g:iA';
         $settings->thumbnail_max_h = '30';
         $settings->locale = 'en-US';
-        $settings->version_footer = 'on';
-        $settings->support_footer = 'on';
+        $settings->version_footer = 'off';
+        $settings->support_footer = 'off';
         $settings->pwd_secure_min = '8';
         $settings->save();
 
