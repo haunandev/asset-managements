@@ -1,6 +1,6 @@
 <!-- Purchase Cost -->
 <div class="form-group {{ $errors->has(($fieldname ?? 'purchase_cost')) ? ' has-error' : '' }}">
-    <label for="{{ $fieldname ?? 'purchase_cost' }}" class="col-md-3 control-label">{{ trans('general.purchase_cost') }}</label>
+    <label for="{{ $fieldname ?? 'purchase_cost' }}" class="col-md-3 control-label">{{ $translated_name ?? trans('general.purchase_cost') }}</label>
     <div class="col-md-9">
         <div class="input-group col-md-4" style="padding-left: 0px;">
             <input class="form-control" type="text" name="{{ $fieldname ?? 'purchase_cost' }}" aria-label="{{ $fieldname ?? 'purchase_cost' }}" id="{{ $fieldname ?? 'purchase_cost' }}" value="{{ old(($fieldname ?? 'purchase_cost'), Helper::formatCurrencyOutput($item->{$fieldname ?? 'purchase_cost'})) }}" />

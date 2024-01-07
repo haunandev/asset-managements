@@ -60,7 +60,7 @@ class ProductPresenter extends Presenter
                 'field' => 'price',
                 'searchable' => true,
                 'sortable' => true,
-                'title' => trans('general.purchase_cost'),
+                'title' => 'Price',
                 'footerFormatter' => 'sumFormatter',
                 'class' => 'text-right',
             ],

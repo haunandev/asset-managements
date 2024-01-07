@@ -15,7 +15,7 @@
 @include ('partials.forms.edit.category-select', ['translated_name' => trans('general.category'), 'fieldname' => 'category_id'])
 @include ('partials.forms.edit.category-select', ['translated_name' => 'Sub Category', 'fieldname' => 'sub_category_id'])
 @include ('partials.forms.edit.image-upload', ['image_path' => app('products_upload_path')])
-@include ('partials.forms.edit.purchase_cost', ['currency_type' => 'IDR', 'fieldname' => 'price'])
+@include ('partials.forms.edit.purchase_cost', ['fieldname' => 'price', 'translated_name' => 'Price'])
 
 @include ('partials.forms.edit.textarea', ['translated_name' => 'General Memo', 'fieldname' => 'memo'])
 @include ('partials.forms.edit.textarea', ['translated_name' => 'Product Specification', 'fieldname' => 'specification'])
