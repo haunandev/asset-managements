@@ -14,14 +14,14 @@ class SettingsSeeder extends Seeder
         Setting::truncate();
         $settings = new Setting;
         $settings->per_page = 20;
-        $settings->site_name = 'Snipe-IT Demo';
+        $settings->site_name = 'OMNI-FMP';
         $settings->auto_increment_assets = 1;
         $settings->logo = 'snipe-logo.png';
-        $settings->alert_email = 'service@snipe-it.io';
+        $settings->alert_email = 'service@email.com';
         $settings->header_color = null;
         $settings->barcode_type = 'QRCODE';
-        $settings->default_currency = 'USD';
-        $settings->brand = 3;
+        $settings->default_currency = 'IDR';
+        $settings->brand = 2;
         $settings->ldap_enabled = 0;
         $settings->full_multiple_companies_support = 0;
         $settings->alt_barcode = 'C128';

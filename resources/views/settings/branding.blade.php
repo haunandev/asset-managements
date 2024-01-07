@@ -125,7 +125,7 @@
 
 
                         <!-- show urls in emails-->
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <div class="col-md-3">
                                 <strong>{{ trans('admin/settings/general.show_url_in_emails') }}</strong>
                             </div>
@@ -136,7 +136,7 @@
                                 </label>
                                 <p class="help-block">{{ trans('admin/settings/general.show_url_in_emails_help_text') }}</p>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- Header color -->
                         <div class="form-group {{ $errors->has('header_color') ? 'error' : '' }}">
@@ -199,7 +199,7 @@
 
 
                         <!-- Support Footer -->
-                        <div class="form-group {{ $errors->has('support_footer') ? 'error' : '' }}">
+                        {{-- <div class="form-group {{ $errors->has('support_footer') ? 'error' : '' }}">
                             <div class="col-md-3">
                                 {{ Form::label('support_footer', trans('admin/settings/general.support_footer')) }}
                             </div>
@@ -214,11 +214,11 @@
 
                                 {!! $errors->first('support_footer', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}
                             </div>
-                        </div>
+                        </div> --}}
 
 
                         <!-- Version Footer -->
-                        <div class="form-group {{ $errors->has('version_footer') ? 'error' : '' }}">
+                        {{-- <div class="form-group {{ $errors->has('version_footer') ? 'error' : '' }}">
                             <div class="col-md-3">
                                 {{ Form::label('version_footer', trans('admin/settings/general.version_footer')) }}
                             </div>
@@ -233,7 +233,7 @@
                                 <p class="help-block">{{ trans('admin/settings/general.version_footer_help') }}</p>
                                 {!! $errors->first('version_footer', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- Additional footer -->
                         <div class="form-group {{ $errors->has('footer_text') ? 'error' : '' }}">
