@@ -71,7 +71,7 @@ class ProductController extends Controller
         $limit = app('api_limit_value');
 
         $order = $request->input('order') === 'asc' ? 'asc' : 'desc';
-        $sort = in_array($request->input('sort'), $allowed_columns) ? $request->input('sort') : 'assets_count';
+        $sort = in_array($request->input('sort'), $allowed_columns) ? $request->input('sort') : 'id';
         $datas->orderBy($sort, $order);
 
         $total = $datas->count();
