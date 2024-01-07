@@ -48,6 +48,16 @@ View Product
             <div class="col-md-12">
               <div class="container row-new-striped">
 
+                {{-- product_code --}}
+                <div class="row">
+                  <div class="col-md-3">
+                    <strong>Product ID</strong>
+                  </div>
+                  <div class="col-md-9">
+                    {{ sprintf("%07d", $item->id) }}
+                  </div>
+                </div>
+
                 {{-- name --}}
                 <div class="row">
                   <div class="col-md-3">

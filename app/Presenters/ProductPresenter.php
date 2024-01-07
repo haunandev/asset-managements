@@ -23,6 +23,14 @@ class ProductPresenter extends Presenter
                 'visible' => false,
             ],
             [
+                'field' => 'product_code',
+                'searchable' => false,
+                'sortable' => false,
+                'switchable' => true,
+                'title' => trans('general.id'),
+                'visible' => true,
+            ],
+            [
                 'field' => 'image',
                 'searchable' => false,
                 'sortable' => true,

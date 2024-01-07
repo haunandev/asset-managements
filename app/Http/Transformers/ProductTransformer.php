@@ -38,6 +38,7 @@ class ProductTransformer
         if ($data) {
             $array = [
                 'id' => (int) $data->id,
+                'product_code' => (string) sprintf("%07d", $data->id),
                 'name' => (string) $data->name,
                 'parent_id' => (int) $data->parent_id,
                 'description' => (string) $data->description,
