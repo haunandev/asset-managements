@@ -131,7 +131,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api', 'throttle:api']], functi
      */
      Route::group(['prefix' => 'purchase-orders'], function () {
        
-       Route::get('{item_type}/selectlist',
+       Route::get('selectlist',
            [
                Api\PurchaseOrderController::class, 
                'selectlist'
@@ -159,7 +159,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api', 'throttle:api']], functi
     */
     Route::group(['prefix' => 'vendors'], function () {
       
-      Route::get('{item_type}/selectlist',
+      Route::get('selectlist',
           [
               Api\VendorController::class, 
               'selectlist'
@@ -187,7 +187,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api', 'throttle:api']], functi
      */
     Route::group(['prefix' => 'products'], function () {
         
-        Route::get('{item_type}/selectlist',
+        Route::get('selectlist',
             [
                 Api\ProductController::class, 
                 'selectlist'
